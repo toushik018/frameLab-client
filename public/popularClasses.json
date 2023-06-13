@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Photography Basics",
+    "description": "Learn the fundamentals of photography and camera techniques.",
+    "image": "https://i.ibb.co/897s6JR/camera-photographic-with-smartphone-devices-generative-ai.jpg",
+    "students": 120,
+    "price": 49.99
+  },
+  {
+    "id": 2,
+    "title": "Portrait Photography",
+    "description": "Master the art of capturing stunning portraits.",
+    "image": "https://i.ibb.co/FBG2ycv/shallow-focus-shot-beautiful-young-female-taking-photo-with-her-camera.jpg",
+    "students": 98,
+    "price": 59.99
+  },
+  {
+    "id": 3,
+    "title": "Landscape Photography",
+    "description": "Explore and capture the beauty of landscapes.",
+    "image": "https://i.ibb.co/K2sYbmg/photographer-g1c90f6184-1280.jpg",
+    "students": 85,
+    "price": 69.99
+  },
+  {
+    "id": 4,
+    "title": "Street Photography",
+    "description": "Discover the art of capturing candid moments on the streets.",
+    "image": "https://i.ibb.co/6DQN5rR/road-g37da4710e-1280.jpg",
+    "students": 74,
+    "price": 49.99
+  },
+  {
+    "id": 5,
+    "title": "Fashion Photography",
+    "description": "Learn how to create striking fashion images.",
+    "image": "https://i.ibb.co/F3KNS39/woman-gae4edd567-1280.jpg",
+    "students": 68,
+    "price": 79.99
+  },
+  {
+    "id": 6,
+    "title": "Wildlife Photography",
+    "description": "Capture the beauty and behavior of wildlife in their natural habitats.",
+    "image": "https://i.ibb.co/sVDrnhR/iceland-g736c42ba6-1280.jpg",
+    "students": 57,
+    "price": 89.99
+  }
+]

@@ -5,6 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    extend: {
+      fontFamily: {
+        amatic: ['Amatic SC', 'cursive'],
+      },
+    },
     extend: {},
   },
   plugins: [require("daisyui")],

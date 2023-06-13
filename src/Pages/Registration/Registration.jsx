@@ -1,16 +1,61 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { getAuth } from 'firebase/auth';
+import { app } from '../../firebase/firebase.config';
+import Swal from 'sweetalert2';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+
+
 
 function Registration() {
-    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const { register, handleSubmit, reset, formState: { errors }, watch } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const { createUser, logOut, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const auth = getAuth(app);
 
     const onSubmit = (data) => {
-        console.log(data);
-        // Handle form submission logic here
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                updateUserProfile(data.name, data.photoURL)
+            }).then(() => {
+                console.log('User profile updated');
+                const saveUser = { name: data.name, email: data.email }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            reset();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Account successfully created, Please Login',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            navigate('/')
+                        }
+                    })
+
+
+            }).catch((error) => {
+                console.log(error)
+            });
     };
 
     const handleTogglePassword = () => {
@@ -94,14 +139,14 @@ function Registration() {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-2">Photo URL</label>
-                    <input type="text" {...register('photoUrl')} className="border border-gray-300 p-2 rounded-md w-full" />
+                    <input type="text" {...register('photoURL')} className="border border-gray-300 p-2 rounded-md w-full" />
                 </div>
                 <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">Register</button>
             </form>
             <div className="mt-4">
                 <Link to="/login" className="text-blue-500">Already have an account?</Link>
             </div>
-            <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md">Sign up with Google</button>
+           <SocialLogin></SocialLogin>
         </div>
     );
 }

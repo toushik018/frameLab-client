@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
-import { Link } from 'react-router-dom'; // Assuming you have React Router set up for navigation
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Assuming you have React Router set up for navigation
+import { AuthContext } from '../../Providers/AuthProvider';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 function Login() {
   const { register, handleSubmit } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const { signIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     console.log(data);
-    // Handle login logic here
+    signIn(data.email, data.password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
   };
 
   const handleTogglePassword = () => {
@@ -42,7 +55,7 @@ function Login() {
       <div className="mt-4">
         <Link to="/register" className="text-blue-500">Create an account</Link>
       </div>
-      <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md">Sign in with Google</button>
+     <SocialLogin></SocialLogin>
     </div>
   );
 }
