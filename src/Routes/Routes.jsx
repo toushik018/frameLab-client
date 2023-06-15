@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import SelectedClasses from "../Pages/Dashboard/SelectedClasses/SelectedClasses";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -48,8 +50,17 @@ const router = createBrowserRouter([
         element: <SelectedClasses></SelectedClasses>
       },
       {
+        path: 'payment/:id',
+        element: <Payment></Payment>,
+        loader: ({ params }) => fetch(`http://localhost:5000/payment/${params.id}`)
+      },
+      {
         path: 'manageUsers',
         element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+      },
+      {
+        path: 'manageClasses',
+        element: <AdminRoute><ManageClasses></ManageClasses> </AdminRoute>
       }
     ]
   }

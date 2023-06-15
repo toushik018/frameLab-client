@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import useClass from '../../../Hooks/useClass';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,10 +43,6 @@ const SelectedClasses = () => {
     };
 
 
-    const handlePayClass = (classId) => {
-        // Implement the logic to pay for the selected class
-    };
-
     return (
         <div className="container mx-auto py-8 px-10">
             <div className='flex justify-evenly bg-gray-100 mb-4 p-4 rounded-lg'>
@@ -75,12 +72,12 @@ const SelectedClasses = () => {
                                 >
                                     Delete
                                 </button>
-                                <button
+                                <Link to={`/dashboard/payment/${classes._id}`}>
+                                    <button
                                     className="text-blue-500 hover:text-blue-600 focus:outline-none"
-                                    onClick={() => handlePayClass(classes.id)}
                                 >
                                     Pay
-                                </button>
+                                </button></Link>
                             </div>
                         </div>
                     </div>

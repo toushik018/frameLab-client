@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { ImSpinner9 } from "react-icons/im";
+import Swal from 'sweetalert2';
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
@@ -38,12 +39,19 @@ const AddClass = () => {
         availableSeats: parseInt(data.availableSeats),
         price: parseFloat(data.price),
         status: 'pending',
+        enrolled: 0,
       });
 
       // Reset the form after successful submission
       // You can also redirect the user to a different page
       // after the class is added.
-      alert('Class added successfully!');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your class has been added',
+        showConfirmButton: false,
+        timer: 1500
+      })
       reset();
     } catch (error) {
       console.error('Error adding class:', error);
@@ -80,8 +88,6 @@ const AddClass = () => {
             className="border border-gray-300 p-2 rounded-md w-full"
           />
         </div>
-
-        <input type="file"  {...register('classImage', { required: true })} className="file-input file-input-bordered file-input-sm w-full max-w-xs mb-6" />
 
         {user && (
           <>

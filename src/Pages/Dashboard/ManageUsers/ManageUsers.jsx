@@ -53,6 +53,7 @@ const ManageUsers = () => {
 
     return (
         <div className="overflow-x-auto">
+            <h1 className="text-3xl font-bold mb-4">Manage Classes</h1>
             <table className="table-auto w-fll lg:w-[1000px] bg-white border border-gray-300">
                 <thead>
                     <tr>
