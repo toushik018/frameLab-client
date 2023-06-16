@@ -23,8 +23,6 @@ const ApprovedClasses = () => {
             });
     }, []);
 
-    console.log(classes);
-
     const handleSelect = classItem => {
         if (user && user.email) {
             const classInfo = {
