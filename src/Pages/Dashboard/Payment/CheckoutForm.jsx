@@ -97,7 +97,6 @@ const CheckoutForm = ({ title, price, data }) => {
                 instructorId: data.instructorId,
             };
 
-
             axiosSecure.post('/payment', payment)
                 .then(res => {
                     console.log(res.data);
@@ -109,7 +108,6 @@ const CheckoutForm = ({ title, price, data }) => {
                     console.log(error);
                     // Handle the error,
                 });
-
         }
     }
 
