@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import './CheckoutForm.css'
+import useClasses from '../../../Hooks/useClasses';
 
-const CheckoutForm = ({ selectedClass, price }) => {
+const CheckoutForm = ({ title, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const [allClasses] = useClasses();
 
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
@@ -85,20 +87,26 @@ const CheckoutForm = ({ selectedClass, price }) => {
             setTransactionId(paymentIntent.id)
             // saving payment information
 
-            const payment = {email: user?.email,
-                 transactionId: paymentIntent.id,
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
                 price,
-                data: new Date(),
-                status: 'it is pending',
-            }
+                date: new Date(),
+                className: title,
+              };
+              
 
-            axiosSecure.post('/payment', payment)
-            .then(res => {
+              axiosSecure.post('/payment', payment)
+              .then(res => {
                 console.log(res.data);
-                if(res.data.insertedId){
-                    // display confirm
+                if (res.data.insertedId) {
+                  // Display confirmation or perform any necessary actions
                 }
-            })
+              })
+              .catch(error => {
+                console.log(error);
+                // Handle the error, if needed
+              });
 
         }
     }

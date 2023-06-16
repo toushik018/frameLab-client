@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { FaChalkboardTeacher, FaHome } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaHome, FaList, FaClipboardList } from 'react-icons/fa';
+import { MdLibraryAddCheck, MdList, MdManageAccounts, MdManageHistory, MdPayment } from "react-icons/md";
 import useClass from '../../Hooks/useClass';
 import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
@@ -34,12 +35,12 @@ const Dashboard = () => {
               <>
                 <li>
                   <NavLink to="/dashboard/manageClasses" className={isActive('/dashboard/manageClasses') ? 'active-link' : ''}>
-                    Manage Classes
+                   <MdManageHistory /> Manage Classes
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageUsers" className={isActive('/dashboard/manageUsers') ? 'active-link' : ''}>
-                    Manage Users
+                   <MdManageAccounts /> Manage Users
                   </NavLink>
                 </li>
               </>
@@ -49,18 +50,18 @@ const Dashboard = () => {
                 {/* Student Dashboard */}
                 <li>
                   <NavLink to="/dashboard/selectedClasses" className={isActive('/dashboard/selectedClasses') ? 'active-link' : ''}>
-                    My Selected Classes
+                   <FaList /> My Selected Classes
                     <span className="indicator-item badge bg-white">{classes?.length}</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/enrolledClasses" className={isActive('/dashboard/enrolledClasses') ? 'active-link' : ''}>
-                    My Enrolled Classes
+                   <FaClipboardList  /> My Enrolled Classes
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/payment" className={isActive('/dashboard/payment') ? 'active-link' : ''}>
-                    Payment
+                   <MdPayment /> Payment
                   </NavLink>
                 </li>
               </>
@@ -71,12 +72,12 @@ const Dashboard = () => {
                 {/* Instructor */}
                 <li>
                   <NavLink to="/dashboard/addClass" className={isActive('/dashboard/addClass') ? 'active-link' : ''}>
-                    Add a Class
+                   <MdLibraryAddCheck /> Add a Class
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/myClasses" className={isActive('/dashboard/myClasses') ? 'active-link' : ''}>
-                    My Classes
+                   <MdList /> My Classes
                   </NavLink>
                 </li>
               </>

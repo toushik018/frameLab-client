@@ -15,6 +15,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import Feedback from "../Pages/FeedBack/Feedback";
 import AllInstructors from "../Home/Home/AllInstructors/AllInstructors";
 import NotFound from "../Pages/NotFound/NotFound";
+import ApprovedClasses from "../Pages/ApprovedClasses/ApprovedClasses";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <AllInstructors></AllInstructors>
+      },
+      {
+        path: '/classes',
+        element: <ApprovedClasses></ApprovedClasses>
       }
     ]
   },

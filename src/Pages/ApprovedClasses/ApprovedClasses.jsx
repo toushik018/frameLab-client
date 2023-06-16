@@ -1,18 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useClass from '../../Hooks/useClass';
 
-const PopularClasses = () => {
+const ApprovedClasses = () => {
   const [classes, setClasses] = useState([]);
-  const classesRef = useRef(null);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [, refetch] = useClass();
-  const [isLoading, setIsLoading] = useState(true);
 
-  // console.log('User:', user);
+  useEffect(() => {
+    fetch('http://localhost:5000/approved-classes')
+      .then(response => response.json())
+      .then(data => {
+        setClasses(data);
+      })
+      .catch(error => {
+        console.error('Error fetching classes:', error);
+      });
+  }, []);
 
   const handleSelect = classItem => {
     if (user && user.email) {
@@ -66,34 +73,16 @@ const PopularClasses = () => {
     }
   }
 
-
-  useEffect(() => {
-    fetch('http://localhost:5000/classes')
-      .then(response => response.json())
-      .then(data => {
-        const sortedClasses = data
-          .filter(classItem => classItem.status === 'approved') // Filter approved classes
-          .sort((a, b) => a.students - b.students); // Sort by lowest available seats first
-        setClasses(sortedClasses.slice(0, 6)); // Only show the first 6 classes
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching classes:', error);
-        setIsLoading(false);
-      });
-  }, []);
-
- 
-  console.log(classes);
-
   return (
-    <div className="w-4/5 mx-auto mb-16">
+    <div className="w-4/5 mx-auto">
       <h1 className="text-2xl font-bold mb-4">Classes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {classes.map(classItem => (
           <div
             key={classItem._id}
-            className={'bg-white rounded-lg shadow-lg overflow-hidden'}
+            className={`bg-white rounded-lg shadow-lg overflow-hidden ${
+              classItem.availableSeats === 0 ? 'bg-red-700 text-white' : ''
+            }`}
           >
             <img
               src={classItem.classImage}
@@ -105,7 +94,7 @@ const PopularClasses = () => {
               <p>Instructor: {classItem.instructorName}</p>
               <p>Available Seats: {classItem.availableSeats}</p>
               <p>Price: ${classItem.price}</p>
-              
+              {(!user || (user.role !== 'admin' && user.role !== 'instructor')) && (
                 <button
                   onClick={() => handleSelect(classItem)}
                   disabled={classItem.availableSeats === 0}
@@ -113,7 +102,7 @@ const PopularClasses = () => {
                 >
                   {classItem.availableSeats === 0 ? 'Sold Out' : 'Select'}
                 </button>
-              
+              )}
             </div>
           </div>
         ))}
@@ -122,4 +111,4 @@ const PopularClasses = () => {
   );
 };
 
-export default PopularClasses;
+export default ApprovedClasses;

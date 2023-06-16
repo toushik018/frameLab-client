@@ -44,6 +44,12 @@ const PopularInstructors = () => {
               whileTap={{ scale: 0.8, rotate: -20, borderRadius: "100%" }}
               transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.1 }}
               className="bg-gradient-to-br from-gray-500 via-gray-600 to-gray-700 bg-opacity-90 rounded-lg overflow-hidden cursor-pointer transform hover:shadow-xl transition-transform duration-300"
+              style={{
+                backgroundImage: `url(${classItem.classImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat"
+              }}
             >
               <div className="avatar flex justify-center py-4">
                 <div className="w-24 h-24 rounded-full overflow-hidden">
@@ -60,6 +66,8 @@ const PopularInstructors = () => {
         </div>
       )}
     </div>
+
+
   );
 };
 

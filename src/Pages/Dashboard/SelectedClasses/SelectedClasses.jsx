@@ -62,10 +62,10 @@ const SelectedClasses = () => {
                             className="w-full h-40 object-cover"
                         />
                         <div className="p-4">
-                            <h2 className="text-lg font-semibold mb-2">{classes.title}</h2>
+                            <h2 className="text-lg font-semibold mb-2">{classes.name}</h2>
                             <p className="text-gray-600">Instructor: {user.displayName}</p>
                             <p className="text-gray-600">Available Seats: {classes.availableSeats}</p>
-                            <p className="text-gray-600">Price: {classes.price}</p>
+                            <p className="text-gray-600">Price: ${classes.price}</p>
                             <div className="flex justify-between mt-4">
                                 <button
                                     className="text-red-500 hover:text-red-600 focus:outline-none"
