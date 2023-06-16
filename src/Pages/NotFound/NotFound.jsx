@@ -1,8 +1,11 @@
 import React from 'react';
 import error from '../../assets/pngwing.com.png'
 import { Link } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 
 const NotFound = () => {
+  useTitle('Not Found')
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <img src={error} alt="" />

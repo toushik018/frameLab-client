@@ -3,12 +3,14 @@ import useClass from '../../../Hooks/useClass';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
 const SelectedClasses = () => {
     const [classes, refetch] = useClass();
     const { user } = useContext(AuthContext);
+    useTitle('Selected Classes')
 
     const total = classes.reduce((sum, classItem) => classItem.price + sum, 0)
 
@@ -25,7 +27,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectedClasses/${classes._id}`, {
+                fetch(`https://frame-lab-server.vercel.app/selectedClasses/${classes._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

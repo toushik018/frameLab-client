@@ -3,15 +3,17 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useClass from '../../Hooks/useClass';
+import useTitle from '../../Hooks/useTitle';
 
 const ApprovedClasses = () => {
     const [classes, setClasses] = useState([]);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [, refetch] = useClass();
+    useTitle('Approved Classes')
 
     useEffect(() => {
-        fetch('http://localhost:5000/approved-classes')
+        fetch('https://frame-lab-server.vercel.app/approved-classes')
             .then(response => response.json())
             .then(data => {
                 setClasses(data);
@@ -34,13 +36,13 @@ const ApprovedClasses = () => {
                 students: classItem.students,
                 description: classItem.description,
                 availableSeats: classItem.availableSeats,
+                classId: classItem._id,
                 instructor: classItem.instructorName,
                 email: user.email,
                 instructorId: classItem?.instructorId,
-                classId: classItem._id,
             };
 
-            fetch('http://localhost:5000/selectedClasses', {
+            fetch('https://frame-lab-server.vercel.app/selectedClasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

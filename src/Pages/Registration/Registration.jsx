@@ -9,6 +9,7 @@ import { getAuth } from 'firebase/auth';
 import { app } from '../../firebase/firebase.config';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import useTitle from '../../Hooks/useTitle';
 
 
 
@@ -19,6 +20,7 @@ function Registration() {
     const { createUser, logOut, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const auth = getAuth(app);
+    useTitle('Registration')
 
     const onSubmit = (data) => {
         createUser(data.email, data.password)
@@ -30,7 +32,7 @@ function Registration() {
                 console.log('User profile updated');
                 const saveUser = { name: data.name, email: data.email }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://frame-lab-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

@@ -6,7 +6,7 @@ const useAdmin = () => {
   const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
     queryKey: ['isAdmin', user?.email],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/users/admin/${user?.email}`);
+      const response = await fetch(`https://frame-lab-server.vercel.app/users/admin/${user?.email}`);
       const data = await response.json();
       return data.admin;
     },

@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
 
             // get and set token
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('https://frame-lab-server.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
                         // console.log(data.data.token);
                         localStorage.setItem('access-token', data.data.token)
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
                 localStorage.removeItem('access-token')
             }
 
-            fetch(`http://localhost:5000/user/${currentUser?.email}`)
+            fetch(`https://frame-lab-server.vercel.app/user/${currentUser?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setUserData(data)

@@ -31,7 +31,7 @@ const PopularClasses = () => {
         classId: classItem._id,
       };
 
-      fetch('http://localhost:5000/selectedClasses', {
+      fetch('https://frame-lab-server.vercel.app/selectedClasses', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -71,7 +71,7 @@ const PopularClasses = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/approved-classes')
+    fetch('https://frame-lab-server.vercel.app/approved-classes')
       .then(response => response.json())
       .then(data => {
         // Sort classes based on the number of students enrolled

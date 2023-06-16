@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../../Hooks/useTitle';
 
 const Feedback = () => {
   const { id } = useParams();
   const [feedbackText, setFeedbackText] = useState('');
+  useTitle('Feedback')
 
   const handleFeedback = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/classes/${id}/feedback`, {
+    fetch(`https://frame-lab-server.vercel.app/classes/${id}/feedback`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

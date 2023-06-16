@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import useClasses from '../../../Hooks/useClasses';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 
 const ManageClasses = () => {
   const [allClasses, loading, refetch] = useClasses();
-
+  useTitle('Manage Classes')
   const handlePermission = (id, status) => {
-    fetch(`http://localhost:5000/classes/approve/${id}`, {
+    fetch(`https://frame-lab-server.vercel.app/classes/approve/${id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'

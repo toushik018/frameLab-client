@@ -4,11 +4,14 @@ import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; // Assuming you have React Router set up for navigation
 import { AuthContext } from '../../Providers/AuthProvider';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import useTitle from '../../Hooks/useTitle';
+import Swal from 'sweetalert2';
 
 function Login() {
   const { register, handleSubmit } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useContext(AuthContext);
+  useTitle('Login')
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,8 +23,16 @@ function Login() {
     signIn(data.email, data.password)
       .then(result => {
         const user = result.user;
-        console.log(user);
-        navigate(from, { replace: true });
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Logged in successfully',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          console.log(user);
+          navigate(from, { replace: true });
+        });
       })
   };
 
@@ -55,7 +66,7 @@ function Login() {
       <div className="mt-4">
         <Link to="/register" className="text-blue-500">Create an account</Link>
       </div>
-     <SocialLogin></SocialLogin>
+      <SocialLogin></SocialLogin>
     </div>
   );
 }

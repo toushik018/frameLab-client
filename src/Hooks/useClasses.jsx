@@ -5,7 +5,7 @@ const useClasses = () => {
     const { data: allClasses = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['allClasses'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes/admin');
+            const res = await fetch('https://frame-lab-server.vercel.app/classes/admin');
             return res.json();
         }
     })

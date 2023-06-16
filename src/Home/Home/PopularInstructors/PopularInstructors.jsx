@@ -8,7 +8,7 @@ const PopularInstructors = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch('http://localhost:5000/classes')
+    fetch('https://frame-lab-server.vercel.app/classes')
       .then(response => response.json())
       .then(data => {
         setClasses(data);

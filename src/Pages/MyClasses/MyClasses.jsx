@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const MyClasses = () => {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
+  useTitle('My Class')
 
   // console.log(classes);
 
   useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:5000/classes/instructor?email=${user.email}`)
+      fetch(`https://frame-lab-server.vercel.app/classes/instructor?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
           setClasses(data);

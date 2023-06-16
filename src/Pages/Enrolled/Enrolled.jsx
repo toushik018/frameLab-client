@@ -1,12 +1,14 @@
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
+import useTitle from "../../Hooks/useTitle";
 
 const Enrolled = () => {
     const { user } = useAuth();
     const [enrolledData, setEnrolledData] = useState([]);
+    useTitle('Enrolled Classes')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/enrolled/${user?.email}`)
+        fetch(`https://frame-lab-server.vercel.app/enrolled/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setEnrolledData(data);

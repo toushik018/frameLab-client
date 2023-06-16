@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import useAuth from '../../../Hooks/useAuth';
+import useTitle from '../../../Hooks/useTitle';
 
 const AllInstructors = () => {
   const [classes, setClasses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuth();
+  useTitle('All Instructors')
 
   useEffect(() => {
-    fetch('http://localhost:5000/classes')
+    fetch('https://frame-lab-server.vercel.app/classes')
       .then(response => response.json())
       .then(data => {
         setClasses(data);
