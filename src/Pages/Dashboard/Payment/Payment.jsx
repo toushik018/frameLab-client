@@ -13,9 +13,10 @@ const stripePromise = loadStripe(import.meta.env.VITE_payment_Gateway_PK);
 
 const Payment = () => {
     const [selectedClass] = useClass()
-    const { price } = useLoaderData();
+    const  data = useLoaderData();
 
-    console.log(price);
+    console.log(data);
+    const price = data?.price
 
 
 
@@ -25,7 +26,7 @@ const Payment = () => {
            
 
             <Elements stripe={stripePromise}>
-                <CheckoutForm selectedClass={selectedClass} price={price}></CheckoutForm>
+                <CheckoutForm selectedClass={selectedClass} data={data} price={price}></CheckoutForm>
             </Elements>
         </div>
 

@@ -16,6 +16,7 @@ import Feedback from "../Pages/FeedBack/Feedback";
 import AllInstructors from "../Home/Home/AllInstructors/AllInstructors";
 import NotFound from "../Pages/NotFound/NotFound";
 import ApprovedClasses from "../Pages/ApprovedClasses/ApprovedClasses";
+import Enrolled from "../Pages/Enrolled/Enrolled";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: 'feedback/:id',
         element: <Feedback></Feedback>
+      },
+      {
+        path: 'enrolled',
+        element: <Enrolled></Enrolled>
       }
     ]
   }

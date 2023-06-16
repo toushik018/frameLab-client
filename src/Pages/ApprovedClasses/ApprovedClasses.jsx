@@ -21,6 +21,8 @@ const ApprovedClasses = () => {
       });
   }, []);
 
+  console.log(classes);
+
   const handleSelect = classItem => {
     if (user && user.email) {
       const classInfo = {
@@ -33,7 +35,9 @@ const ApprovedClasses = () => {
         description: classItem.description,
         availableSeats: classItem.availableSeats,
         instructor: classItem.instructorName,
-        email: user.email
+        email: user.email,
+        instructorId: classItem?.instructorId,
+        classId: classItem._id,
       };
 
       fetch('http://localhost:5000/selectedClasses', {
@@ -92,8 +96,9 @@ const ApprovedClasses = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold">{classItem.className}</h2>
               <p>Instructor: {classItem.instructorName}</p>
-              <p>Available Seats: {classItem.availableSeats}</p>
+              <p>Available Seats: {classItem.availableSeats - classItem.enrolled}</p>
               <p>Price: ${classItem.price}</p>
+              <p>Enrolled: {classItem?.enrolled}</p>
               {(!user || (user.role !== 'admin' && user.role !== 'instructor')) && (
                 <button
                   onClick={() => handleSelect(classItem)}

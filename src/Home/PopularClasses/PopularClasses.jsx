@@ -26,7 +26,9 @@ const PopularClasses = () => {
         description: classItem.description,
         availableSeats: classItem.availableSeats,
         instructor: classItem.instructorName,
-        email: user.email
+        email: user.email,
+        instructorId: classItem?.instructorId,
+        classId: classItem._id,
       };
 
       fetch('http://localhost:5000/selectedClasses', {
@@ -40,6 +42,7 @@ const PopularClasses = () => {
         .then(data => {
           if (data.insertedId) {
             refetch();
+            classItem.availableSeats -= 1;
             Swal.fire({
               position: 'top-end',
               icon: 'success',
@@ -68,14 +71,15 @@ const PopularClasses = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/classes')
+    fetch('http://localhost:5000/approved-classes')
       .then(response => response.json())
       .then(data => {
-        const sortedClasses = data
-          .filter(classItem => classItem.status === 'approved') // Filter approved classes
-          .sort((a, b) => a.students - b.students); // Sort by lowest available seats first
-        setClasses(sortedClasses.slice(0, 6)); // Only show the first 6 classes
-        setIsLoading(false);
+        // Sort classes based on the number of students enrolled
+        const sortedClasses = data.sort((a, b) => b.enrolled - a.enrolled);
+        // Slice the top 6 classes
+        const topSixClasses = sortedClasses.slice(0, 6);
+        setClasses(topSixClasses);
+        console.log(topSixClasses);
       })
       .catch(error => {
         console.error('Error fetching classes:', error);
@@ -84,11 +88,11 @@ const PopularClasses = () => {
   }, []);
 
  
-  console.log(classes);
+  
 
   return (
     <div className="w-4/5 mx-auto mb-16">
-      <h1 className="text-2xl font-bold mb-4">Classes</h1>
+      <h1 className="text-2xl font-bold mb-4">Popular Classes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {classes.map(classItem => (
           <div
@@ -103,8 +107,9 @@ const PopularClasses = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold">{classItem.className}</h2>
               <p>Instructor: {classItem.instructorName}</p>
-              <p>Available Seats: {classItem.availableSeats}</p>
+              <p>Available Seats: {classItem.availableSeats - classItem.enrolled}</p>
               <p>Price: ${classItem.price}</p>
+              <p>Students: {classItem.enrolled}</p>
               
                 <button
                   onClick={() => handleSelect(classItem)}

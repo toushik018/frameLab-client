@@ -12,6 +12,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userData, setUserData] = useState(null)
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -55,6 +56,14 @@ const AuthProvider = ({ children }) => {
                 localStorage.removeItem('access-token')
             }
 
+            fetch(`http://localhost:5000/user/${currentUser?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setUserData(data)
+                console.log(data);
+
+            })
+
             setLoading(false)
         })
 
@@ -70,7 +79,8 @@ const AuthProvider = ({ children }) => {
         signIn,
         signInWithGoogle,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        userData
 
     }
 

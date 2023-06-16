@@ -5,10 +5,11 @@ import { ImSpinner9 } from "react-icons/im";
 import Swal from 'sweetalert2';
 
 const AddClass = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userData } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
   const [loading, setLoading] = useState(false);
 
+  console.log(userData);
   const createClass = async (classData) => {
     try {
       // Make the API request to add the class
@@ -36,6 +37,7 @@ const AddClass = () => {
         classImage: data.classImage,
         instructorName: user ? user.displayName : '',
         instructorEmail: user ? user.email : '',
+        instructorId: userData? userData._id : '',
         availableSeats: parseInt(data.availableSeats),
         price: parseFloat(data.price),
         status: 'pending',

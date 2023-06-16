@@ -55,7 +55,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/enrolledClasses" className={isActive('/dashboard/enrolledClasses') ? 'active-link' : ''}>
+                  <NavLink to="/dashboard/enrolled" className={isActive('/dashboard/enrolled') ? 'active-link' : ''}>
                    <FaClipboardList  /> My Enrolled Classes
                   </NavLink>
                 </li>
