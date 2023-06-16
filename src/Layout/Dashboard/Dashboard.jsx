@@ -69,7 +69,7 @@ const Dashboard = () => {
 
             {isInstructor && (
               <>
-                {/* Instructor */}
+                {/* Instructor side */}
                 <li>
                   <NavLink to="/dashboard/addClass" className={isActive('/dashboard/addClass') ? 'active-link' : ''}>
                     <MdLibraryAddCheck /> Add a Class

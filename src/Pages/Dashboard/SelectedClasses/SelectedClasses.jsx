@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
 
 
-
 const SelectedClasses = () => {
     const [classes, refetch] = useClass();
     const { user } = useContext(AuthContext);
