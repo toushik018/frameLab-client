@@ -35,12 +35,12 @@ const Dashboard = () => {
               <>
                 <li>
                   <NavLink to="/dashboard/manageClasses" className={isActive('/dashboard/manageClasses') ? 'active-link' : ''}>
-                   <MdManageHistory /> Manage Classes
+                    <MdManageHistory /> Manage Classes
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageUsers" className={isActive('/dashboard/manageUsers') ? 'active-link' : ''}>
-                   <MdManageAccounts /> Manage Users
+                    <MdManageAccounts /> Manage Users
                   </NavLink>
                 </li>
               </>
@@ -50,18 +50,18 @@ const Dashboard = () => {
                 {/* Student Dashboard */}
                 <li>
                   <NavLink to="/dashboard/selectedClasses" className={isActive('/dashboard/selectedClasses') ? 'active-link' : ''}>
-                   <FaList /> My Selected Classes
+                    <FaList /> My Selected Classes
                     <span className="indicator-item badge bg-white">{classes?.length}</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/enrolled" className={isActive('/dashboard/enrolled') ? 'active-link' : ''}>
-                   <FaClipboardList  /> My Enrolled Classes
+                    <FaClipboardList /> My Enrolled Classes
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/payment" className={isActive('/dashboard/payment') ? 'active-link' : ''}>
-                   <MdPayment /> Payment
+                    <MdPayment /> Payment
                   </NavLink>
                 </li>
               </>
@@ -72,12 +72,12 @@ const Dashboard = () => {
                 {/* Instructor */}
                 <li>
                   <NavLink to="/dashboard/addClass" className={isActive('/dashboard/addClass') ? 'active-link' : ''}>
-                   <MdLibraryAddCheck /> Add a Class
+                    <MdLibraryAddCheck /> Add a Class
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/myClasses" className={isActive('/dashboard/myClasses') ? 'active-link' : ''}>
-                   <MdList /> My Classes
+                    <MdList /> My Classes
                   </NavLink>
                 </li>
               </>

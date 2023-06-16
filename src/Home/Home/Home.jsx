@@ -8,13 +8,13 @@ import Reviews from './Review/Reviews';
 const Home = () => {
     return (
         <div>
-        <Carousel></Carousel>
-        <PopularClasses></PopularClasses>
-        <PopularInstructors></PopularInstructors>
-        <Reviews></Reviews>
-        <Footer></Footer>
+            <Carousel></Carousel>
+            <PopularClasses></PopularClasses>
+            <PopularInstructors></PopularInstructors>
+            <Reviews></Reviews>
+            <Footer></Footer>
         </div>
     );
 };
 
-export default Home;<h2>This is Home</h2>
+export default Home; <h2>This is Home</h2>

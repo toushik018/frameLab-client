@@ -74,10 +74,10 @@ const SelectedClasses = () => {
                                 </button>
                                 <Link to={`/dashboard/payment/${classes._id}`}>
                                     <button
-                                    className="text-blue-500 hover:text-blue-600 focus:outline-none"
-                                >
-                                    Pay
-                                </button></Link>
+                                        className="text-blue-500 hover:text-blue-600 focus:outline-none"
+                                    >
+                                        Pay
+                                    </button></Link>
                             </div>
                         </div>
                     </div>
