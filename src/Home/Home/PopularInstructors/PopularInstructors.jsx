@@ -26,6 +26,9 @@ const PopularInstructors = () => {
     .sort((a, b) => a.availableSeats - b.availableSeats)
     .slice(0, 6);
 
+
+
+    
   return (
     <div className="w-4/5 mx-auto">
       <h1 className="text-2xl font-bold mb-4">Top Instructors</h1>
@@ -66,8 +69,6 @@ const PopularInstructors = () => {
         </div>
       )}
     </div>
-
-
   );
 };
 
