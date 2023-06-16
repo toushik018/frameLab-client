@@ -8,7 +8,7 @@ const Feedback = () => {
 
   const handleFeedback = (e) => {
     e.preventDefault();
-    fetch(`https://frame-lab-server.vercel.app/classes/${id}/feedback`, {
+    fetch(`http://localhost:5000/classes/${id}/feedback`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

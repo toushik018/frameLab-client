@@ -6,7 +6,7 @@ const useInstructor = () => {
   const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
     queryKey: ['isInstructor', user?.email],
     queryFn: async () => {
-      const response = await fetch(`https://frame-lab-server.vercel.app/users/instructor/${user?.email}`);
+      const response = await fetch(`http://localhost:5000/users/instructor/${user?.email}`);
       const data = await response.json();
       return data.instructor;
     },

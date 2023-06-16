@@ -83,7 +83,7 @@ const NavBar = () => {
                                 <img src={user.photoURL} alt="Profile" className="w-10 h-10 rounded-full" />
                             </div>
                         </div>
-                        <button onClick={handleLogOut} className="header-btn-2 mr-4 bg-slate-700 p-2">
+                        <button onClick={handleLogOut} className="header-btn-2 mr-4">
                             Logout
                         </button>
                     </>

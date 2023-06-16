@@ -10,7 +10,7 @@ const MyClasses = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      fetch(`https://frame-lab-server.vercel.app/classes/instructor?email=${user.email}`)
+      fetch(`http://localhost:5000/classes/instructor?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
           setClasses(data);

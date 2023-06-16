@@ -12,7 +12,7 @@ const AddClass = () => {
   const createClass = async (classData) => {
     try {
       // Make the API request to add the class
-      const response = await fetch('https://frame-lab-server.vercel.app/classes', {
+      const response = await fetch('http://localhost:5000/classes', {
         method: 'POST',
         body: JSON.stringify(classData),
         headers: {

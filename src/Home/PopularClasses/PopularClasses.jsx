@@ -26,7 +26,7 @@ const PopularClasses = () => {
         email: user.email
       };
 
-      fetch('https://frame-lab-server.vercel.app/selectedClasses', {
+      fetch('http://localhost:5000/selectedClasses', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

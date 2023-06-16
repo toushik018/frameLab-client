@@ -12,6 +12,7 @@ const SelectedClasses = () => {
 
     const total = classes.reduce((sum, classItem) => classItem.price + sum, 0)
 
+    console.log(classes);
 
     const handleDeleteClass = (classes) => {
         Swal.fire({
@@ -24,7 +25,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://frame-lab-server.vercel.app/selectedClasses/${classes._id}`, {
+                fetch(`http://localhost:5000/selectedClasses/${classes._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

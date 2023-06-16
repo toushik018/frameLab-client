@@ -13,11 +13,14 @@ import AdminRoute from "./AdminRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import Feedback from "../Pages/FeedBack/Feedback";
+import AllInstructors from "../Home/Home/AllInstructors/AllInstructors";
+import NotFound from "../Pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <NotFound />,
     children: [
       {
         path: '/',
@@ -30,6 +33,11 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+
+      {
+        path: '/instructors',
+        element: <AllInstructors></AllInstructors>
       }
     ]
   },
@@ -53,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`https://frame-lab-server.vercel.app/payment/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/payment/${params.id}`)
       },
       {
         path: 'manageUsers',

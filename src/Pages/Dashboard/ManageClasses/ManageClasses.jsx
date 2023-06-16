@@ -8,7 +8,7 @@ const ManageClasses = () => {
   const [allClasses, loading, refetch] = useClasses();
 
   const handlePermission = (id, status) => {
-    fetch(`https://frame-lab-server.vercel.app/classes/approve/${id}`, {
+    fetch(`http://localhost:5000/classes/approve/${id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'

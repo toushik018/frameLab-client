@@ -9,7 +9,7 @@ const useClass = () => {
     const { refetch, data: selectedClass = [] } = useQuery({
         queryKey: ['classes', user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://frame-lab-server.vercel.app/selectedClasses?email=${user?.email}`, {
+            const res = await fetch(`http://localhost:5000/selectedClasses?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }

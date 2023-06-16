@@ -14,7 +14,7 @@ const ManageClasses = () => {
 
   const handleFeedback = () => {
     if (selectedClassId) {
-      fetch(`https://frame-lab-server.vercel.app/classes/${selectedClassId}/feedback`, {
+      fetch(`http://localhost:5000/classes/${selectedClassId}/feedback`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
