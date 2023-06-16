@@ -52,7 +52,6 @@ const ManageUsers = () => {
             })
     };
 
-
     return (
         <div className="overflow-x-auto">
             <h1 className="text-3xl font-bold mb-4">Manage Classes</h1>

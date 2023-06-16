@@ -57,7 +57,7 @@ const CheckoutForm = ({ title, price, data }) => {
 
         } else {
             setCardError('')
-            // console.log('payment method', paymentMethod);
+            
         }
 
         setProcessing(true)
@@ -102,12 +102,12 @@ const CheckoutForm = ({ title, price, data }) => {
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
-                        // Display confirmation or perform any necessary actions
+                       
                     }
                 })
                 .catch(error => {
                     console.log(error);
-                    // Handle the error, if needed
+                    // Handle the error,
                 });
 
         }

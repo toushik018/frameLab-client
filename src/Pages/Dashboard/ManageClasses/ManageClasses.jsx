@@ -34,9 +34,6 @@ const ManageClasses = () => {
   }
 
 
-
-
-
   if (loading) {
     return <div>Loading...</div>;
   }
