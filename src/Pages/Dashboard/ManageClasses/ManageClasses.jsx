@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useClasses from '../../../Hooks/useClasses';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 const ManageClasses = () => {
   const [allClasses, loading, refetch] = useClasses();
-  
-
 
   const handlePermission = (id, status) => {
-    fetch(`http://localhost:5000/classes/approve/${id}`, {
+    fetch(`https://frame-lab-server.vercel.app/classes/approve/${id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'
@@ -32,6 +31,10 @@ const ManageClasses = () => {
 
       })
   }
+
+
+
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -70,7 +73,7 @@ const ManageClasses = () => {
 
                   <button
                     onClick={() => handlePermission(classItem._id, 'approved')}
-                    className={`px-4 py-2 rounded-md mr-2 mb-1 ${classItem.status === 'approved' ? 'bg-gray-400 text-gray-700' : 'bg-green-500 text-white'}`}
+                    className={`px-4 py-2 rounded-md mr-2 mb-1 ${classItem.status === 'denied' || classItem.status === 'approved' ? 'bg-green-200 text-gray-700' : 'bg-green-500 hover:bg-green-600 text-white'}`}
                     disabled={classItem.status === 'approved' || classItem.status === 'denied'}
                   >
                     Approve
@@ -78,14 +81,16 @@ const ManageClasses = () => {
 
                   <button
                     onClick={() => handlePermission(classItem._id, 'denied')}
-                    className={`px-4 py-2 rounded-md mr-2 mb-1 ${classItem.status === 'denied' ? 'bg-gray-400 text-gray-700' : 'bg-red-500 text-white'}`}
+                    className={`px-4 py-2 rounded-md mr-2 mb-1 ${classItem.status === 'denied' || classItem.status === 'approved' ? 'bg-red-200 text-gray-700' : 'bg-red-500 hover:bg-red-600 text-white'}`}
                     disabled={classItem.status === 'denied' || classItem.status === 'approved'}
                   >
                     Deny
                   </button>
 
-
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded-md">Send Feedback</button>
+                  <Link to={`/dashboard/feedback/${classItem._id}`}>
+                    <button
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"> Send Feedback
+                    </button></Link>
                 </td>
               </tr>
             ))}

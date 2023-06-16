@@ -10,7 +10,7 @@ const MyClasses = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:5000/classes/instructor?email=${user.email}`)
+      fetch(`https://frame-lab-server.vercel.app/classes/instructor?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
           setClasses(data);
@@ -67,7 +67,7 @@ const MyClasses = () => {
                 </td>
                 <td className="py-4 px-6">
                   {classItem.status === 'denied' ? (
-                    classItem.feedback
+                    classItem?.feedback
                   ) : (
                     '-'
                   )}

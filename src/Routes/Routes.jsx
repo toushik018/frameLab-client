@@ -12,6 +12,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import Feedback from "../Pages/FeedBack/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`http://localhost:5000/payment/${params.id}`)
+        loader: ({ params }) => fetch(`https://frame-lab-server.vercel.app/payment/${params.id}`)
       },
       {
         path: 'manageUsers',
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: 'manageClasses',
         element: <AdminRoute><ManageClasses></ManageClasses> </AdminRoute>
+      },
+      {
+        path: 'feedback/:id',
+        element: <Feedback></Feedback>
       }
     ]
   }
