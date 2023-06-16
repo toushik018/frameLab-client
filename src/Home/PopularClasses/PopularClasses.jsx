@@ -87,8 +87,8 @@ const PopularClasses = () => {
       });
   }, []);
 
- 
-  
+
+
 
   return (
     <div className="w-4/5 mx-auto mb-16">
@@ -110,15 +110,15 @@ const PopularClasses = () => {
               <p>Available Seats: {classItem.availableSeats - classItem.enrolled}</p>
               <p>Price: ${classItem.price}</p>
               <p>Students: {classItem.enrolled}</p>
-              
-                <button
-                  onClick={() => handleSelect(classItem)}
-                  disabled={classItem.availableSeats === 0}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4"
-                >
-                  {classItem.availableSeats === 0 ? 'Sold Out' : 'Select'}
-                </button>
-              
+
+              <button
+                onClick={() => handleSelect(classItem)}
+                disabled={classItem.availableSeats === 0}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4"
+              >
+                {classItem.availableSeats === 0 ? 'Sold Out' : 'Select'}
+              </button>
+
             </div>
           </div>
         ))}
