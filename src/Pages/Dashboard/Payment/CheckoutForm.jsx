@@ -85,7 +85,7 @@ const CheckoutForm = ({ title, price, data }) => {
 
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id)
-            
+
             // saving payment information
             const payment = {
                 email: user?.email,
@@ -95,20 +95,20 @@ const CheckoutForm = ({ title, price, data }) => {
                 name: data.name,
                 classId: data.classId,
                 instructorId: data.instructorId,
-              };
-              
+            };
 
-              axiosSecure.post('/payment', payment)
-              .then(res => {
-                console.log(res.data);
-                if (res.data.insertedId) {
-                  // Display confirmation or perform any necessary actions
-                }
-              })
-              .catch(error => {
-                console.log(error);
-                // Handle the error, if needed
-              });
+
+            axiosSecure.post('/payment', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        // Display confirmation or perform any necessary actions
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    // Handle the error, if needed
+                });
 
         }
     }
