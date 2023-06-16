@@ -7,8 +7,6 @@ import useTitle from "../../../Hooks/useTitle";
 
 
 
-// TODO: publishable keu
-
 const stripePromise = loadStripe(import.meta.env.VITE_payment_Gateway_PK);
 
 
@@ -17,10 +15,8 @@ const Payment = () => {
     const data = useLoaderData();
     useTitle('Payment')
 
-    console.log(data);
+    // console.log(data);
     const price = data?.price
-
-
 
     return (
         <div className="w-full">

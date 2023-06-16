@@ -20,7 +20,6 @@ const Enrolled = () => {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -37,7 +36,6 @@ const Enrolled = () => {
                     {enrolledData.map((item) => (
                         <tr key={item._id}>
                             <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-
                             <td className="px-6 py-4 whitespace-nowrap">{formatDate(item.date)}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{item.price}$</td>
                             <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
