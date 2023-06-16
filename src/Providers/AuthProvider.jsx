@@ -57,12 +57,12 @@ const AuthProvider = ({ children }) => {
             }
 
             fetch(`http://localhost:5000/user/${currentUser?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setUserData(data)
-                console.log(data);
+                .then(res => res.json())
+                .then(data => {
+                    setUserData(data)
+                    console.log(data);
 
-            })
+                })
 
             setLoading(false)
         })
