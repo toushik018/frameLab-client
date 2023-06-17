@@ -24,9 +24,9 @@ const ApprovedClasses = () => {
     }, []);
 
     const handleSelect = classItem => {
+        
         if (user && user.email) {
             const classInfo = {
-                classId: classItem.id,
                 image: classItem.classImage,
                 name: classItem.className,
                 title: classItem.title,
@@ -84,7 +84,7 @@ const ApprovedClasses = () => {
                 {classes.map(classItem => (
                     <div
                         key={classItem._id}
-                        className={`bg-white rounded-lg shadow-lg overflow-hidden ${classItem.availableSeats === 0 ? 'bg-red-700 text-white' : ''
+                        className={` rounded-lg shadow-lg overflow-hidden ${classItem.availableSeats === 0 ? 'bg-red-700 text-white' : ''
                             }`}
                     >
                         <img
